@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useAuthContext } from 'src/contexts/auth-context';
 
+// AuthGuard 컴포넌트 정의
 export const AuthGuard = (props) => {
   const { children } = props;
   const router = useRouter();
@@ -10,17 +11,15 @@ export const AuthGuard = (props) => {
   const ignore = useRef(false);
   const [checked, setChecked] = useState(false);
 
-  // Only do authentication check on component mount.
-  // This flow allows you to manually redirect the user after sign-out, otherwise this will be
-  // triggered and will automatically redirect to sign-in page.
-
+  // 컴포넌트가 마운트되면서 한 번만 인증 확인을 수행
+  // 이 흐름은 로그아웃 후 사용자를 수동으로 리디렉션하기 위해 있으며, 그렇지 않으면 자동으로 로그인 페이지로 리디렉션됩니다.
   useEffect(
     () => {
       if (!router.isReady) {
         return;
       }
 
-      // Prevent from calling twice in development mode with React.StrictMode enabled
+      // React.StrictMode가 활성화된 개발 모드에서 두 번 호출되는 것을 방지
       if (ignore.current) {
         return;
       }
@@ -42,16 +41,16 @@ export const AuthGuard = (props) => {
     [router.isReady]
   );
 
+  // 인증 확인을 완료하기 전에는 null을 반환하여 컴포넌트가 아무것도 렌더링되지 않도록 함
   if (!checked) {
     return null;
   }
 
-  // If got here, it means that the redirect did not occur, and that tells us that the user is
-  // authenticated / authorized.
-
+  // 인증 확인이 완료된 후에는 자식 컴포넌트들을 렌더링
   return children;
 };
 
+// AuthGuard 컴포넌트의 프로퍼티 타입 정의
 AuthGuard.propTypes = {
   children: PropTypes.node
 };

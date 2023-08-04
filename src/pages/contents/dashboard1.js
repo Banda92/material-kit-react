@@ -13,6 +13,13 @@ import { OverviewTraffic } from 'src/sections/overview/overview-traffic';
 
 const now = new Date();
 
+  //게이지차트 데이터
+  const gaugeData = {
+    TotalWard: [843, 912],
+    NormalWard: [602, 636],
+    NursingCare: [112, 120],
+  };
+
 const Page = () => (
   <>
     <Head>
@@ -41,7 +48,8 @@ const Page = () => (
               difference={12}
               positive
               sx={{ height: '100%' }}
-              value="$24k"
+              value="92"
+              currentName="전체 병동"
             />
           </Grid>
           <Grid

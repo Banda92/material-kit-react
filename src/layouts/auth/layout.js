@@ -5,6 +5,7 @@ import { Logo } from 'src/components/logo';
 
 // TODO: Change subtitle text
 
+// Layout 컴포넌트 정의
 export const Layout = (props) => {
   const { children } = props;
 
@@ -16,10 +17,12 @@ export const Layout = (props) => {
         flex: '1 1 auto'
       }}
     >
+      {/* 두 개의 컬럼으로 구성된 그리드 컨테이너 */}
       <Grid
         container
         sx={{ flex: '1 1 auto' }}
       >
+        {/* 좌측 컬럼 */}
         <Grid
           xs={12}
           lg={6}
@@ -30,6 +33,7 @@ export const Layout = (props) => {
             position: 'relative'
           }}
         >
+          {/* 상단 헤더 */}
           <Box
             component="header"
             sx={{
@@ -40,6 +44,7 @@ export const Layout = (props) => {
               width: '100%'
             }}
           >
+            {/* 로고 이미지에 링크를 적용 */}
             <Box
               component={NextLink}
               href="/"
@@ -49,11 +54,14 @@ export const Layout = (props) => {
                 width: 32
               }}
             >
+              {/* 로고 컴포넌트 */}
               <Logo />
             </Box>
           </Box>
+          {/* 자식 컴포넌트(페이지 내용)를 렌더링 */}
           {children}
         </Grid>
+        {/* 우측 컬럼 */}
         <Grid
           xs={12}
           lg={6}
@@ -69,6 +77,7 @@ export const Layout = (props) => {
           }}
         >
           <Box sx={{ p: 3 }}>
+            {/* 페이지 제목 */}
             <Typography
               align="center"
               color="inherit"
@@ -80,6 +89,7 @@ export const Layout = (props) => {
               variant="h1"
             >
               Welcome to{' '}
+              {/* 외부 링크로 연결되는 박스 */}
               <Box
                 component="a"
                 sx={{ color: '#15B79E' }}
@@ -88,6 +98,7 @@ export const Layout = (props) => {
                 Devias Kit
               </Box>
             </Typography>
+            {/* 페이지 부제목 */}
             <Typography
               align="center"
               sx={{ mb: 3 }}
@@ -95,6 +106,7 @@ export const Layout = (props) => {
             >
               A professional kit that comes with ready-to-use MUI components.
             </Typography>
+            {/* 이미지 */}
             <img
               alt=""
               src="/assets/auth-illustration.svg"
@@ -106,6 +118,7 @@ export const Layout = (props) => {
   );
 };
 
-Layout.prototypes = {
+// Layout 컴포넌트의 프로퍼티 타입 정의
+Layout.propTypes = {
   children: PropTypes.node
 };

@@ -3,9 +3,10 @@ import ArrowDownIcon from '@heroicons/react/24/solid/ArrowDownIcon';
 import ArrowUpIcon from '@heroicons/react/24/solid/ArrowUpIcon';
 import CurrencyDollarIcon from '@heroicons/react/24/solid/CurrencyDollarIcon';
 import { Avatar, Card, CardContent, Stack, SvgIcon, Typography } from '@mui/material';
+import GaugeD3 from 'src/components/gaugeD3';
 
 export const OverviewBudget = (props) => {
-  const { difference, positive = false, sx, value } = props;
+  const { difference, positive = false, sx, value, currentName } = props;
 
   return (
     <Card sx={sx}>
@@ -21,23 +22,25 @@ export const OverviewBudget = (props) => {
               color="text.secondary"
               variant="overline"
             >
-              Budget
+              {currentName}
             </Typography>
             <Typography variant="h4">
-              {value}
+              {`${value}%`}
             </Typography>
           </Stack>
-          <Avatar
+          <GaugeD3 value={props.value}/>
+          {/* <Avatar
             sx={{
               backgroundColor: 'error.main',
               height: 56,
               width: 56
             }}
           >
+            
             <SvgIcon>
               <CurrencyDollarIcon />
             </SvgIcon>
-          </Avatar>
+          </Avatar> */}
         </Stack>
         {difference && (
           <Stack
@@ -68,7 +71,7 @@ export const OverviewBudget = (props) => {
               color="text.secondary"
               variant="caption"
             >
-              Since last month
+              전월 대비
             </Typography>
           </Stack>
         )}
