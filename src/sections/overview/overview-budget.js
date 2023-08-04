@@ -14,8 +14,8 @@ export const OverviewBudget = (props) => {
         <Stack
           alignItems="flex-start"
           direction="row"
-          justifyContent="space-between"
-          spacing={3}
+          justifyContent="space-evenly"
+          spacing={6}
         >
           <Stack spacing={1}>
             <Typography
@@ -47,7 +47,7 @@ export const OverviewBudget = (props) => {
             alignItems="center"
             direction="row"
             spacing={2}
-            sx={{ mt: 2 }}
+            sx={{ mt: -1, marginLeft: 4 }}
           >
             <Stack
               alignItems="center"
