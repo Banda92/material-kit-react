@@ -345,7 +345,7 @@ const Page = () => {
             </Grid>
             <Grid 
             xs={12} 
-            md={6} 
+            md={12} 
             lg={6}>
               <WardStatus wardStatusData={wardStatusData}/>
               {/* <OverviewTraffic

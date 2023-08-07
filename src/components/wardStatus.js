@@ -1,13 +1,14 @@
 import WardStatusTable from "./wardStatusTable";
-import { Card, CardContent, CardHeader, sx } from "@mui/material";
+import { Card, CardContent, CardHeader } from "@mui/material";
 
 const WardStatus = (props) => {
+    const {sx}=props
   const half = Math.ceil(props.wardStatusData.length / 2);
   const leftData = props.wardStatusData.slice(0, half);
   const rightData = props.wardStatusData.slice(half);
 
   return (
-    <Card sx={{height:'100%'}}>
+    <Card sx={sx}>
       <CardHeader
         title="테이블3"
         sx={{
