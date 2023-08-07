@@ -1,45 +1,49 @@
-/* BarChartByh.scss (Non-module SCSS) */
+/* BarChartByh.module.scss */
 
 .Chart {
-    table {
-      width: 100%;
-      height: 100%;
-      border-collapse: collapse;
-      align-items: center;
-      align-self: center;
-      align-content: center;
-      font-size: 0.4rem;
-  
-      th {
-        width: 30%; /* 수정한 부분: 첫 번째 열의 너비를 조정 */
-        background-color: #3858ed;
-        font-weight: bold;
-        color: white;
-      }
-  
-      td {
-        padding: 3px;
-        border: 1px solid lightgray;
-      }
-  
-      td:last-child {
-        width: 70%; /* 수정한 부분: 두 번째 열의 너비를 조정 */
-      }
+  table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    font-size: 0.4rem;
+    text-align: center;
+    
+
+    th {
+      width: 5%; /* 첫 번째 열의 너비를 더 좁게 조절함 */
+      background-color: #3858ed;
+      font-weight: bold;
+      color: white;
+      
     }
-  
-    .barContainer {
-      display: flex;
+
+    td {
+      
+      padding: 3px;
+      border: 1px solid lightgray;
     }
-  
-    .bar {
-      height: 10px;
-      background-color: orange;
-      border-radius: 0px 10px 10px 0px;
-    }
-  
-    .barText {
-      margin-left: 10px;
-      line-height: 10px;
+
+    td:last-child {
+      
+      width: 75%; /* 두 번째 열의 너비를 더 넓게 조절함 */
     }
   }
-  
+
+  .barContainer {
+    display: flex;
+  }
+
+  .bar {
+    height: 10px;
+    background-color: orange;
+    border-radius: 0px 10px 10px 0px;
+  }
+
+  .barText {
+    margin-left: 10px;
+    line-height: 10px;
+  }
+}

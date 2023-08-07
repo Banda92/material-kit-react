@@ -1,0 +1,42 @@
+// SCSS variables
+$primaryColor: #3858ed;
+$successColor: #1df039;
+$errorColor: red;
+
+// SCSS styles
+.customTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.4rem;
+  text-align: center;
+
+  & .tableHeader {
+    padding: 3px;
+    border: 1px solid lightgray;
+    font-weight: bold;
+    background-color: $primaryColor;
+    color: white;
+  }
+
+  & .tableCell {
+    padding: 3px;
+    border: 1px solid lightgray;
+  }
+
+  & .willAdmission {
+    color: $successColor;
+  }
+
+  & .willDischarged {
+    color: $errorColor;
+  }
+}
+
+// Additional styles for the Card component
+.Card {
+  // Your custom styles for the Card component can go here
+}
+
+.CardContent {
+  // Your custom styles for the CardContent component can go here
+}
