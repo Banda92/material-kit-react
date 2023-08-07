@@ -5,7 +5,7 @@ const TableChartByh = (props) => {
   const { data, sx } = props;
 
   return (
-    <Card sx={sx}>
+    <Card sx={{sx}}>
       <CardHeader
         title="테이블1"
         sx={{

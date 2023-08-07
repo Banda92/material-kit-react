@@ -1,0 +1,80 @@
+// wardStatusTable.module.scss
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    tr {
+        display: flex;
+    }
+
+    th {
+        background-color: #3858ed;
+        color: white;
+        border: 1px solid lightgray;
+        font-size: 0.4rem;
+    }
+
+    th:first-child {
+        flex: 1.5;
+    }
+
+    th:nth-child(2) {
+        flex: 8.5;
+    }
+
+    td {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid lightgray;
+        justify-content: center;
+        align-items: center;
+        height: 48px;
+
+        &.status-cell {
+            flex: 8.5;
+            text-align: left;
+            vertical-align: top;
+
+            .boxCont {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+
+                .boxEach {
+                    line-height: 0.8;
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+
+    td:first-child {
+        flex: 1.5;
+        background-color: #3858ed;
+        color: white;
+        font-weight: bold;
+        font-size: 0.4rem;
+    }
+
+    .status {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        margin: 2px;
+    }
+
+    .status:nth-child(1) {
+        background-color: blue;
+    }
+
+    .status:nth-child(2) {
+        background-color: green;
+    }
+
+    .status:nth-child(3) {
+        background-color: red;
+    }
+
+    .status:nth-child(4) {
+        background-color: gray;
+    }
+}

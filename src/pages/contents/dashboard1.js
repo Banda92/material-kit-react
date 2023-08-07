@@ -6,8 +6,10 @@ import { OverviewBudget } from "src/sections/overview/overview-budget";
 import { OverviewTraffic } from "src/sections/overview/overview-traffic";
 import TableChartByh from "src/components/tableChartByh";
 import BarChartByh from "src/components/barChartByh";
+import WardStatus from "src/components/wardStatus";
 
 const now = new Date();
+//테이블&바차트 데이터
 const data = [
   {
     Ward: 52,
@@ -144,6 +146,138 @@ const gaugeData = {
   NursingCare: [112, 120],
 };
 
+
+const wardStatusData =  [
+  {
+    Ward: "052",
+    Value: "0000000100010000000",
+  },
+  {
+    Ward: "081",
+    Value: "00000010000000001000000000000",
+  },
+  {
+    Ward: "091",
+    Value: "0000000000000000000001000100000000",
+  },
+  {
+    Ward: "092",
+    Value: "000000020000000000000100003000000000000000",
+  },
+  {
+    Ward: "101",
+    Value: "0000003000000010000000000000000000000",
+  },
+  {
+    Ward: "102",
+    Value: "0000000000000000000000100000000000000000",
+  },
+  {
+    Ward: "111",
+    Value: "000000000000000000000001100100000000000000",
+  },
+  {
+    Ward: "112",
+    Value: "100000000201001000110100000000000",
+  },
+  {
+    Ward: "121",
+    Value: "00000000000000000010001000000000",
+  },
+  {
+    Ward: "122",
+    Value: "0000000000000000000000000",
+  },
+  {
+    Ward: "131",
+    Value: "000000000001000000010000",
+  },
+  {
+    Ward: "132",
+    Value: "000000000000000000000000000010000000020",
+  },
+  {
+    Ward: "141",
+    Value: "0000000101110000000000000000203000000000000",
+  },
+  {
+    Ward: "142",
+    Value: "0100000000000000000000002000000000000",
+  },
+  {
+    Ward: "143",
+    Value: "0000000101110000000000000000203000000000000",
+  },
+  {
+    Ward: "144",
+    Value: "0100000000000000000000002000000000000",
+  },
+  {
+    Ward: "145",
+    Value: "0000000101110000000000000000203000000000000",
+  },
+  {
+    Ward: "146",
+    Value: "0100000000000000000000002000000000000",
+  },
+  {
+    Ward: "147",
+    Value: "0000000101110000000000000000203000000000000",
+  },
+  {
+    Ward: "148",
+    Value: "0100000000000000000000002000000000000",
+  },
+  {
+    Ward: "149",
+    Value: "0000000101110000000000000000203000000000000",
+  },
+  {
+    Ward: "150",
+    Value: "0100000000000000000000002000000000000",
+  },
+  {
+    Ward: "151",
+    Value: "0000000101110000000000000000203000000000000",
+  },
+  {
+    Ward: "152",
+    Value: "0100000000000000000000002000000000000",
+  },
+
+  {
+    Ward: "153",
+    Value: "0000000101110000000000000000203000000000000",
+  },
+  {
+    Ward: "154",
+    Value: "0100000000000000000000002000000000000",
+  },
+  {
+    Ward: "155",
+    Value: "0000000101110000000000000000203000000000000",
+  },
+  {
+    Ward: "156",
+    Value: "0100000000000000000000002000000000000",
+  },
+  {
+    Ward: "157",
+    Value: "0000000101110000000000000000203000000000000",
+  },
+  {
+    Ward: "158",
+    Value: "0100000000000000000000002000000000000",
+  },
+];
+
+
+
+
+
+
+
+
 const Page = () => {
   const [count, setCount] = useState(0);
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -206,21 +340,24 @@ const Page = () => {
             </Grid>
             <Grid 
             xs={12} 
-            lg={8}>
+            lg={6}>
               <div className="chartWrapper">
-                <TableChartByh data={data} />
-                <BarChartByh data={data} />
+                <TableChartByh data={data} 
+                sx={{height:'50%'}} />
+                <BarChartByh data={data} 
+                sx={{height:'50%'}} />
               </div>
             </Grid>
             <Grid 
             xs={12} 
             md={6} 
-            lg={4}>
-              <OverviewTraffic
+            lg={6}>
+              <WardStatus wardStatusData={wardStatusData}/>
+              {/* <OverviewTraffic
                 chartSeries={[63, 15, 22]}
                 labels={["Desktop", "Tablet", "Phone"]}
                 sx={{ height: "100%" }}
-              />
+              /> */}
             </Grid>
           </Grid>
         </Container>
