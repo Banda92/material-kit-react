@@ -1,9 +1,11 @@
 import React from "react";
 import { Card, CardContent, CardHeader } from "@mui/material";
+import {styls} from './barChartByh.module.scss';
 
 const BarChartByh = (props) => {
   const data = props.data;
   const { sx } = props;
+  
 
   return (
     <Card sx={sx}>
