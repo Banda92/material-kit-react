@@ -13,7 +13,7 @@ import { SvgIcon } from '@mui/material';
 export const items = [
   {
     title: '대시보드1',
-    path: '/',
+    path: '/contents/dashboard1',
     icon: (
       <SvgIcon fontSize="small">
         <ChartBarIcon />

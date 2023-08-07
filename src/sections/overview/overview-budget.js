@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import ArrowDownIcon from '@heroicons/react/24/solid/ArrowDownIcon';
 import ArrowUpIcon from '@heroicons/react/24/solid/ArrowUpIcon';
 import CurrencyDollarIcon from '@heroicons/react/24/solid/CurrencyDollarIcon';
-import { Avatar, Card, CardContent, Stack, SvgIcon, Typography } from '@mui/material';
+import { Card, CardContent, Stack, SvgIcon, Typography } from '@mui/material';
 import GaugeD3 from 'src/components/gaugeD3';
 
 export const OverviewBudget = (props) => {
