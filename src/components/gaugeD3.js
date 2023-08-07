@@ -28,7 +28,7 @@ const GaugeD3 = (props) => {
         paddingVertical={0}
         width= {160}
         height={100}
-        valueTextFontSize={18}
+        valueTextFontSize="18"
 
       />
     </div>

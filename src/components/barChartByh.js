@@ -34,13 +34,11 @@ const BarChartByh = (props) => {
               </tr>
             </thead>
             <tbody className={styles.tbody}>
-              {" "}
               {/* SCSS로 변경한 부분 */}
               {data.map((row, index) => (
                 <tr key={index}>
                   <td className={styles.td}>{row.Ward}</td> {/* SCSS로 변경한 부분 */}
                   <td className={styles.td}>
-                    {" "}
                     {/* SCSS로 변경한 부분 */}
                     <div className={styles.barContainer}>
                       <div
@@ -52,7 +50,7 @@ const BarChartByh = (props) => {
                       {/* SCSS로 변경한 부분 */}
                       <div className={styles.barText}>
                         {Math.round(row.OccupancyRate * 100)}%
-                      </div>{" "}
+                      </div>
                       {/* SCSS로 변경한 부분 */}
                     </div>
                   </td>
