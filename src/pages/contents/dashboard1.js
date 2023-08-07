@@ -208,7 +208,7 @@ const Page = () => (
             <OverviewBudget
               difference={4}
               positive={true}
-              sx={{ height: '100%' }}
+              sx={{ height: '100%', paddingBottom:'0px' }}
               value={Math.round(
                 (gaugeData.NursingCare[0] / gaugeData.NursingCare[1]) * 100
               )}
@@ -230,7 +230,7 @@ const Page = () => (
             lg={8}
           >
             <div className='chartWrapper'>
-              <TableChartByh data={data}/>
+              <TableChartByh data={data} />
               <BarChartByh data={data}/>
             </div>
             {/* <OverviewSales

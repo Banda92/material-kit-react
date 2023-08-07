@@ -10,7 +10,7 @@ export const OverviewBudget = (props) => {
 
   return (
     <Card sx={sx}>
-      <CardContent>
+      <CardContent sx={{paddingTop:'10px'}}>
         <Stack
           alignItems="flex-start"
           direction="row"

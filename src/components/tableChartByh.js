@@ -1,26 +1,28 @@
-import { Avatar, Card, CardContent, Stack, Typography, CardHeader } from "@mui/material";
-import { textAlign } from "@mui/system";
+import { Card, CardContent, CardHeader } from "@mui/material";
+
 
 const TableChartByh = (props) => {
-  const data = props.data;
-  const { sx } = props;
+    const { data, sx } = props;
 
   return (
     <Card sx={sx}>
         <CardHeader title="테이블1"
         sx={{
-            '& .MuiCardHeader-title': {
-              padding: '0px', // 원하는 패딩 값으로 설정
-            },
+            paddingTop: '10px',
+            paddingBottom:'0px',
           }}
         />
-              <CardContent>
+              <CardContent sx={{
+                paddingTop:"10px",
+              }}
+              >
           <table
             style={{
               width: "100%",
               borderCollapse: "collapse",
               fontSize:"0.4rem",
-              textAlign:"center"
+              textAlign:"center",
+              
             }}
           >
             <thead>
