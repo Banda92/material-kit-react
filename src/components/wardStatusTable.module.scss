@@ -7,7 +7,7 @@
     }
 
     th {
-        background-color: #3858ed;
+        background-color: #6366F1;
         color: white;
         border: 1px solid lightgray;
         font-size: 0.4rem;
@@ -27,6 +27,7 @@
         border: 1px solid lightgray;
         justify-content: center;
         align-items: center;
+
         height: 48px;
 
         &.status-cell {
@@ -38,6 +39,7 @@
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
+                // margin-left: 10%;
 
                 .boxEach {
                     line-height: 0.8;
@@ -49,7 +51,7 @@
 
     td:first-child {
         flex: 1.5;
-        background-color: #3858ed;
+        background-color: #6366F1;
         color: white;
         font-weight: bold;
         font-size: 0.4rem;

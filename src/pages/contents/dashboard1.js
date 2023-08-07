@@ -273,11 +273,6 @@ const wardStatusData =  [
 
 
 
-
-
-
-
-
 const Page = () => {
   const [count, setCount] = useState(0);
   const [currentTime, setCurrentTime] = useState(new Date());

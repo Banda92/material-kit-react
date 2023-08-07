@@ -29,18 +29,7 @@ export const OverviewBudget = (props) => {
             </Typography>
           </Stack>
           <GaugeD3 value={props.value}/>
-          {/* <Avatar
-            sx={{
-              backgroundColor: 'error.main',
-              height: 56,
-              width: 56
-            }}
-          >
-            
-            <SvgIcon>
-              <CurrencyDollarIcon />
-            </SvgIcon>
-          </Avatar> */}
+
         </Stack>
         {difference && (
           <Stack
