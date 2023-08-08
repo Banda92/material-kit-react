@@ -3,7 +3,6 @@ import Head from "next/head";
 import { Box, Container, Unstable_Grid2 as Grid } from "@mui/material";
 import { Layout as DashboardLayout } from "src/layouts/dashboard/layout";
 import { OverviewBudget } from "src/sections/overview/overview-budget";
-import { OverviewTraffic } from "src/sections/overview/overview-traffic";
 import TableChartByh from "src/components/tableChartByh";
 import BarChartByh from "src/components/barChartByh";
 import WardStatus from "src/components/wardStatus";
