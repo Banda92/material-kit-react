@@ -22,7 +22,7 @@ export const items = [
   },
   {
     title: '대시보드2',
-    path: '/',
+    path: '/contents/dashboard2',
     icon: (
       <SvgIcon fontSize="small">
         <ChartBarIcon />

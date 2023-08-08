@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './wardStatusTable.module.scss' // SCSS module 파일 경로로 수정해주세요
 
 const WardStatusTable = ({ data }) => {
-  const colors = ["#6366F1", "#4CCBA1", "F04438", "gray"];
+  const colors = ["#6366F1", "#4CCBA1", "#F25B51", "gray"];
   return (
     <table className={styles.table}>
       <thead>
