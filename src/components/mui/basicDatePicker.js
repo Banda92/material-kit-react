@@ -28,15 +28,21 @@ export default function BasicDatePicker() {
             value={value}
             onAccept={handleAccept}
             sx={{
-            //   padding: "0px",
-            //   "& label": {
-            //     height: "30px", // 원하는 높이로 조정하세요.
-            //     display: "flex",
-            //     alignItems: "center",
-            //   },
-            //   "& .MuiInputBase-root": {
-            //     backgroundColor: "white",
-            //   },
+              padding: "0px",
+              // backgroundColor:'black',
+              // minWidth:'50px',
+              // maxWidth:'500px',
+              // width:'500px',
+              width:'auto',
+              "& label": {
+                height: "30px", // 원하는 높이로 조정하세요.
+                display: "flex",
+                alignItems: "center",
+              },
+              "& .MuiInputBase-root": {
+                backgroundColor: "white",
+                overflow: 'hidden',
+              },
             }}
           />
         </DemoContainer>

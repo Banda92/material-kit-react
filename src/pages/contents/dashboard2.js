@@ -12,8 +12,8 @@ import dynamic from "next/dynamic";
 // import BasicDatePicker from "src/components/basicDatePicker";
 
 
-const BasicDatePicker = dynamic(import ("src/components/mui/basicDatePicker"), { ssr: false })
-const Checkboxes = dynamic(import ("src/components/mui/checkboxes"), { ssr: false })
+const BasicDatePicker = dynamic(import ("src/components/mui/basicDatePicker"), { ssr: false });
+const Checkboxes = dynamic(import ("src/components/mui/checkBoxes"), { ssr: false });
 
 
  //로딩데이터(더미)
@@ -664,13 +664,13 @@ const Page = () => {
           <Grid container 
           spacing={4}>
             <Grid xs={12} 
-            sm={6} 
+            sm={12} 
             lg={2}>
                          <BasicDatePicker/>
             </Grid>
             <Grid 
             xs={12} 
-            sm={6} 
+            sm={12} 
             lg={5}>
                <Checkboxes
               setFilterHandler={setCategory}
@@ -680,7 +680,7 @@ const Page = () => {
             </Grid>
             <Grid 
             xs={12} 
-            sm={6} 
+            sm={12} 
             lg={5}>
                <Checkboxes
               setFilterHandler={setWard}

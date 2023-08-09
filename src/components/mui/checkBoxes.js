@@ -37,7 +37,7 @@ export default function CheckBoxes(props) {
           {option}
         </li>
       )}
-      style={{ width: 500, backgroundColor:'white', borderRadius:'5px', marginTop:'8px' }}
+      style={{ width: 'auto', backgroundColor:'white', borderRadius:'5px', marginTop:'8px' }}
       renderTags={(value, getTagProps) => {
         const MAX_DISPLAY_COUNT = 5; // 최대 표시 개수 설정
         if (value.length > MAX_DISPLAY_COUNT) {
