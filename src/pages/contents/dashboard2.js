@@ -9,20 +9,13 @@ import {
   Unstable_Grid2 as Grid,
 } from "@mui/material";
 import { Layout as DashboardLayout } from "src/layouts/dashboard/layout";
-import { OverviewBudget } from "src/sections/overview/overview-budget";
-import TableChartByh from "src/components/tableChartByh";
-import BarChartByh from "src/components/barChartByh";
-import WardStatus from "src/components/wardStatus";
 import dynamic from "next/dynamic";
 import { GoogleTreeMapChart } from "src/components/google/GoogleTreeMapChart";
 import ReactDataTable from "src/components/mui/reactDataTable";
 
-// import Checkboxes from "./Components/mui/CheckBoxes";
-// import BasicDatePicker from "src/components/basicDatePicker";
 
 const BasicDatePicker = dynamic(import("src/components/mui/basicDatePicker"), { ssr: false });
 const Checkboxes = dynamic(import("src/components/mui/checkBoxes"), { ssr: false });
-// const GoogleTreeMapChart = dynamic(import ("src/components/google/GoogleTreeMapChart"), { ssr: false });
 
 //로딩데이터(더미)
 const date = new Date();
@@ -3171,12 +3164,7 @@ const Page = () => {
   const [ward, setWard] = useState(uniqueWards);
   const [date, setDate] = useState('2023-07-01 0:00');
 
-  const [filteredData, setFilteredData] = useState(sampleData);
-
-  const applyFilter = () => {
-    setFilteredData(sampleData.filter(data=>data.진료일 === date))
-  };
-
+  
   // useEffect(() => {
   //   console.log(`Filter(category) State has changed : ${category}`);
   // }, [category]);
@@ -3184,7 +3172,7 @@ const Page = () => {
   //   console.log(`Filter(ward) State has changed : ${ward}`);
   // }, [ward]);
 
-  console.log(sampleData.filter(data=>data.진료일 === date));
+  
 
   return (
     <>
@@ -3196,16 +3184,15 @@ const Page = () => {
           <Grid container spacing={4}>
             <Grid xs={12} sm={12} lg={2}>
               <BasicDatePicker
+                initValue={date}
                 data={uniqueDates}
                 setDateHandler={setDate}
-                applyFilter={applyFilter}
               />
             </Grid>
             <Grid xs={12} sm={12} lg={5}>
               <Checkboxes
                 setFilterHandler={setCategory}
                 data={uniqueCategories}
-                applyFilter={applyFilter}
                 label="Category"
               />
             </Grid>
@@ -3213,7 +3200,6 @@ const Page = () => {
               <Checkboxes
                 setFilterHandler={setWard}
                 data={uniqueWards}
-                applyFilter={applyFilter}
                 label="Ward"
               />
             </Grid>
@@ -3238,7 +3224,7 @@ const Page = () => {
             <Grid xs={12} md={12} lg={6}>
               <Card>
                 <CardHeader
-                  title="테이블1"
+                  title="테이블(필터적용)"
                   sx={{
                     paddingTop: "10px",
                     paddingBottom: "0px",
@@ -3249,7 +3235,7 @@ const Page = () => {
                     paddingTop: "10px",
                   }}
                 >
-                  <ReactDataTable sampleData={filteredData} columnKeys={columnKeys} />
+                  <ReactDataTable sampleData={sampleData.filter(data=>data.진료일 === date & category.includes(data.구분) & ward.includes(data.병동))} columnKeys={columnKeys} />
                 </CardContent>
               </Card>
             </Grid>

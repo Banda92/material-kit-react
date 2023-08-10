@@ -20,8 +20,8 @@ export default function CheckBoxes(props) {
 
     const handleFilter = (value,getTagProps)=>{
       getTagProps?
-      props.setFilterHandler([getTagProps]) : props.setFilterHandler(props.data)
-      props.applyFilter()
+      props.setFilterHandler(getTagProps) : props.setFilterHandler(props.data)
+      // props.applyFilter()
       
     }
   
@@ -32,6 +32,7 @@ export default function CheckBoxes(props) {
       options={data}
       disableCloseOnSelect
       getOptionLabel={(option) => option}
+      defaultValue={data} // 여기에 defaultValue 추가
       onChange={handleFilter} // 값이 변했을때 호출
       renderOption={(props, option, { selected }) => (
         <li {...props}>
@@ -46,7 +47,7 @@ export default function CheckBoxes(props) {
       )}
       style={{ width: 'auto', backgroundColor:'white', borderRadius:'5px', marginTop:'8px' }}
       renderTags={(value, getTagProps) => {
-        const MAX_DISPLAY_COUNT = 5; // 최대 표시 개수 설정
+        const MAX_DISPLAY_COUNT = 3; // 최대 표시 개수 설정
         if (value.length > MAX_DISPLAY_COUNT) {
           // 최대 개수를 초과하는 경우, ...으로 표시하고 Tooltip으로 전체 내용을 보여줌
           return (
