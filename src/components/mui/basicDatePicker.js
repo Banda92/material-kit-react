@@ -5,12 +5,14 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
-export default function BasicDatePicker() {
+export default function BasicDatePicker(props) {
   const [value, setValue] = React.useState(dayjs("2023-06-30"));
 
   const handleAccept = (newValue) => {
-    console.log(newValue.format("YYYY-MM-DD")); // Output selected date in YYYY-MM-DD format
-    setValue(newValue);
+    console.log(newValue.format("YYYY-MM-DD m:ss")); // Output selected date in YYYY-MM-DD format
+    setValue(newValue.format("YYYY-MM-DD m:ss"));
+    props.setDateHandler(newValue.format("YYYY-MM-DD m:ss"))
+    props.applyFilter()
   };
 
   const handleKeyDown = (event) => {

@@ -16,7 +16,14 @@ export default function CheckBoxes(props) {
 
     const data = props.data
 // const data = ['간호간병','권역외상센터','권역응급의료센터','분만실','신생아','완화병동']
-    const handleFilter = (value,getTagProps)=>{props.setFilterHandler([getTagProps])}
+
+
+    const handleFilter = (value,getTagProps)=>{
+      getTagProps?
+      props.setFilterHandler([getTagProps]) : props.setFilterHandler(props.data)
+      props.applyFilter()
+      
+    }
   
   return (
     <Autocomplete

@@ -3,8 +3,9 @@ import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow
 
 const ReactDataTable = (props) => {
   const sampleData = props.sampleData;
-  const columnKeys = Object.keys(sampleData[0]);
+  const columnKeys =props.columnKeys;
   
+
 
 
   return (
