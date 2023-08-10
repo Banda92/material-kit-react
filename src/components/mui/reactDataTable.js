@@ -3,7 +3,7 @@ import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow
 
 const ReactDataTable = (props) => {
   const sampleData = props.sampleData;
-  const columnKeys = Object.keys(sampleData[0].data[0]);
+  const columnKeys = Object.keys(sampleData[0]);
   
 
 
@@ -23,7 +23,7 @@ const ReactDataTable = (props) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {sampleData[0].data.map((row, rowIndex) => (
+                {sampleData.map((row, rowIndex) => (
                   <TableRow key={rowIndex} style={{ backgroundColor: rowIndex % 2 === 0 ? '#f0f0f0' : '' }}>
                     {columnKeys.map((key, cellIndex) => (
                       <TableCell key={cellIndex} align="center" style={{ fontSize: '3px', padding: '0px',  }}>
