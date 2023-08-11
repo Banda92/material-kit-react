@@ -21,21 +21,42 @@ export const data = [
 
 export const options = {
   minColor: "#F25B51",
-  midColor: "#ddd",
+  // midColor: "#ddd",
   maxColor: "#4CCBA1",
   headerHeight: 15,
   fontColor: "black",
   showScale: true,
   highlightOnMouseOver: true,
 };
-export const GoogleTreeMapChart = (props) => {
+
+const categories =[
+  "권역외상센터", "간호간병","권역응급의료센터", "SUB-ICU"
+]
+const wards = [
+  "061W","071W","072W","T41W","T51W","TICUA","E41W","EICU","091S"
+]
+
+export const GoogleTreeMapChart = React.memo((props) => {
   const handleChartClick = (event) => {
     const innerText = event.chartWrapper.HS.innerText;
-    const lines = innerText.split('\n'); // 줄바꿈 기준으로 분할
-    const lastValue = lines[lines.length - 1]; // 가장 마지막 값 선택
-    console.log("Last value:", lastValue);
-    
+    const lines = innerText.split("\n");
+    const lastValue = lines[lines.length - 1];
+
+    if (categories.includes(lastValue)) {
+      props.setCategory(lastValue);
+    }
+
+    if (wards.includes(lastValue)) {
+      props.setWard(lastValue);
+    }
+
+
+
   };
+  // const onContextMenu  = (e) => {
+  //   e.preventDefault(); // 우클릭 메뉴가 기본 브라우저 메뉴 대신 표시되도록 방지
+  //   console.log("ContextMenu event occurred!");
+  // }
 
   return (
     <Chart
@@ -45,11 +66,13 @@ export const GoogleTreeMapChart = (props) => {
       data={data}
       options={options}
       chartEvents={[
-        {
-          eventName: "select",
-          callback: handleChartClick,
-        },
+        // {
+        //   eventName: "select",
+        //   callback: handleChartClick,
+        // },
+        
       ]}
+      // onContextMenu={onContextMenu}
     />
   );
-};
+});
