@@ -25,8 +25,10 @@ const Page = () => {
   const [method, setMethod] = useState('email');
   const formik = useFormik({
     initialValues: {
-      email: 'demo@devias.io',
-      password: 'Password123!',
+      // email: 'demo@devias.io',
+      // password: 'Password123!',
+      email: 'ajou@ajoumc.ac.kr',
+      password: 'ajou',
       submit: null
     },
     validationSchema: Yup.object({
