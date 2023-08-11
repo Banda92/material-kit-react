@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Card, CardContent, CardHeader } from "@mui/material";
-import styles from "./BarChartByh.module.scss"; // SCSS 파일을 import 합니다.
+import styles from "./barChartByh.module.scss"; // SCSS 파일을 import 합니다.
 
 const BarChartByh = (props) => {
   const data = props.data;

@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader } from "@mui/material";
-import styles from "./TableChartByh.module.scss";
+import styles from "./tableChartByh.module.scss";
 
 const TableChartByh = (props) => {
   const { data, sx } = props;
