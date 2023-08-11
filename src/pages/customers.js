@@ -199,7 +199,7 @@ const Page = () => {
     <>
       <Head>
         <title>
-          Customers | Devias Kit
+          Customers | AJOU Medical Center
         </title>
       </Head>
       <Box

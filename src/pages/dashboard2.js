@@ -3217,7 +3217,7 @@ const Page = () => {
                     paddingTop: "10px",
                   }}
                 >
-                  <GoogleTreeMapChart setCategory={setCategory} setWard={setWard}/>
+                  <GoogleTreeMapChart setCategory={setCategory} setWard={setWard} uniqueCategories={uniqueCategories} uniqueWards={uniqueWards}/>
                 </CardContent>
               </Card>
             </Grid>

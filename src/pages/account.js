@@ -8,7 +8,7 @@ const Page = () => (
   <>
     <Head>
       <title>
-        Account | Devias Kit
+        Account | AJOU Medical Center
       </title>
     </Head>
     <Box

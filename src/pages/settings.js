@@ -8,7 +8,7 @@ const Page = () => (
   <>
     <Head>
       <title>
-        Settings | Devias Kit
+        Settings | AJOU Medical Center
       </title>
     </Head>
     <Box
