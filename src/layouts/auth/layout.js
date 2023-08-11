@@ -95,7 +95,8 @@ export const Layout = (props) => {
                 sx={{ color: '#15B79E' }}
                 target="_blank"
               >
-                Devias Kit
+                {/* Devias Kit */}
+                Ajou Medical Center
               </Box>
             </Typography>
             {/* 페이지 부제목 */}
@@ -104,13 +105,24 @@ export const Layout = (props) => {
               sx={{ mb: 3 }}
               variant="subtitle1"
             >
-              A professional kit that comes with ready-to-use MUI components.
+              {/* A professional kit that comes with ready-to-use MUI components. */}
+              Please feel free to contact us at https://www.ajoumc.or.kr/
             </Typography>
             {/* 이미지 */}
             <img
               alt=""
-              src="/assets/auth-illustration.svg"
+              // src="/assets/auth-illustration.svg"
+              src="/assets/auth-illustration_ajou.jpg"
             />
+            <Typography
+              align="center"
+              sx={{ mb: 3 }}
+              variant="subtitle1"
+            >
+              {/* A professional kit that comes with ready-to-use MUI components. */}
+              주소 16499 경기도 수원시 영통구 월드컵로 164
+대표전화 1688-6114
+            </Typography>
           </Box>
         </Grid>
       </Grid>

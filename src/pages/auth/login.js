@@ -195,7 +195,8 @@ const Page = () => {
                   sx={{ mt: 3 }}
                 >
                   <div>
-                    You can use <b>demo@devias.io</b> and password <b>Password123!</b>
+                    {/* You can use <b>demo@devias.io</b> and password <b>Password123!</b> */}
+                    You can use <b>ajou@ajoumc.ac.kr</b> and password <b>ajou</b>
                   </div>
                 </Alert>
               </form>
