@@ -73,7 +73,7 @@ const Page = () => {
     <>
       <Head>
         <title>
-          Login | Devias Kit
+          Login | AJOU Medical Center
         </title>
       </Head>
       <Box
