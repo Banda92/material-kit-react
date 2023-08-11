@@ -1,232 +1,363 @@
-import Head from 'next/head';
-import { subDays, subHours } from 'date-fns';
-import { Box, Container, Unstable_Grid2 as Grid } from '@mui/material';
-import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
-import { OverviewBudget } from 'src/sections/overview/overview-budget';
-import { OverviewLatestOrders } from 'src/sections/overview/overview-latest-orders';
-import { OverviewLatestProducts } from 'src/sections/overview/overview-latest-products';
-import { OverviewSales } from 'src/sections/overview/overview-sales';
-import { OverviewTasksProgress } from 'src/sections/overview/overview-tasks-progress';
-import { OverviewTotalCustomers } from 'src/sections/overview/overview-total-customers';
-import { OverviewTotalProfit } from 'src/sections/overview/overview-total-profit';
-import { OverviewTraffic } from 'src/sections/overview/overview-traffic';
+import React, { useState, useEffect } from "react";
+import Head from "next/head";
+import { Box, Container, Unstable_Grid2 as Grid } from "@mui/material";
+import { Layout as DashboardLayout } from "src/layouts/dashboard/layout";
+import { OverviewBudget } from "src/sections/overview/overview-budget";
+import TableChartByh from "src/components/tableChartByh";
+import BarChartByh from "src/components/barChartByh";
+import WardStatus from "src/components/wardStatus";
 
 const now = new Date();
+//테이블&바차트 데이터
+const data = [
+  {
+    Ward: 52,
+    TotalBed: 20,
+    InHospital: 15,
+    WillAdminssion: 0,
+    WillDischarged: 0,
+    EmptyBed: 5,
+    OccupancyRate: 0.75,
+  },
+  {
+    Ward: 81,
+    TotalBed: 41,
+    InHospital: 37,
+    WillAdminssion: 0,
+    WillDischarged: 0,
+    EmptyBed: 4,
+    OccupancyRate: 0.902439024,
+  },
+  {
+    Ward: 91,
+    TotalBed: 46,
+    InHospital: 44,
+    WillAdminssion: 0,
+    WillDischarged: 1,
+    EmptyBed: 1,
+    OccupancyRate: 0.97826087,
+  },
+  {
+    Ward: 92,
+    TotalBed: 41,
+    InHospital: 35,
+    WillAdminssion: 1,
+    WillDischarged: 0,
+    EmptyBed: 5,
+    OccupancyRate: 0.87804878,
+  },
+  {
+    Ward: 101,
+    TotalBed: 36,
+    InHospital: 29,
+    WillAdminssion: 1,
+    WillDischarged: 0,
+    EmptyBed: 6,
+    OccupancyRate: 0.833333333,
+  },
+  {
+    Ward: 102,
+    TotalBed: 27,
+    InHospital: 25,
+    WillAdminssion: 0,
+    WillDischarged: 0,
+    EmptyBed: 2,
+    OccupancyRate: 0.925925926,
+  },
+  {
+    Ward: 111,
+    TotalBed: 26,
+    InHospital: 24,
+    WillAdminssion: 0,
+    WillDischarged: 1,
+    EmptyBed: 1,
+    OccupancyRate: 0.961538462,
+  },
+  {
+    Ward: 112,
+    TotalBed: 46,
+    InHospital: 42,
+    WillAdminssion: 1,
+    WillDischarged: 0,
+    EmptyBed: 3,
+    OccupancyRate: 0.934782609,
+  },
+  {
+    Ward: 121,
+    TotalBed: 43,
+    InHospital: 40,
+    WillAdminssion: 0,
+    WillDischarged: 0,
+    EmptyBed: 3,
+    OccupancyRate: 0.930232558,
+  },
+  {
+    Ward: 122,
+    TotalBed: 45,
+    InHospital: 45,
+    WillAdminssion: 0,
+    WillDischarged: 0,
+    EmptyBed: 0,
+    OccupancyRate: 1,
+  },
+  {
+    Ward: 131,
+    TotalBed: 45,
+    InHospital: 44,
+    WillAdminssion: 0,
+    WillDischarged: 0,
+    EmptyBed: 1,
+    OccupancyRate: 0.977777778,
+  },
+  {
+    Ward: 132,
+    TotalBed: 34,
+    InHospital: 34,
+    WillAdminssion: 0,
+    WillDischarged: 0,
+    EmptyBed: 0,
+    OccupancyRate: 1,
+  },
+  {
+    Ward: 141,
+    TotalBed: 41,
+    InHospital: 39,
+    WillAdminssion: 0,
+    WillDischarged: 1,
+    EmptyBed: 1,
+    OccupancyRate: 0.975609756,
+  },
+  {
+    Ward: 142,
+    TotalBed: 38,
+    InHospital: 36,
+    WillAdminssion: 0,
+    WillDischarged: 0,
+    EmptyBed: 2,
+    OccupancyRate: 0.947368421,
+  },
+];
 
-const Page = () => (
-  <>
-    <Head>
-      <title>
-        아주대 의료원-병상가동율
-      </title>
-    </Head>
-    <Box
-      component="main"
-      sx={{
-        flexGrow: 1,
-        py: 8
-      }}
-    >
-      <Container maxWidth="xl">
-        <Grid
-          container
-          spacing={3}
-        >
-          <Grid
-            xs={12}
-            sm={6}
-            lg={3}
-          >
-            <OverviewBudget
-              difference={12}
-              positive
-              sx={{ height: '100%' }}
-              value="$24k"
-            />
-          </Grid>
-          <Grid
-            xs={12}
-            sm={6}
-            lg={3}
-          >
-            <OverviewTotalCustomers
-              difference={16}
-              positive={false}
-              sx={{ height: '100%' }}
-              value="1.6k"
-            />
-          </Grid>
-          <Grid
-            xs={12}
-            sm={6}
-            lg={3}
-          >
-            <OverviewTasksProgress
-              sx={{ height: '100%' }}
-              value={75.5}
-            />
-          </Grid>
-          <Grid
-            xs={12}
-            sm={6}
-            lg={3}
-          >
-            <OverviewTotalProfit
-              sx={{ height: '100%' }}
-              value="$15k"
-            />
-          </Grid>
-          <Grid
-            xs={12}
-            lg={8}
-          >
-            <OverviewSales
-              chartSeries={[
-                {
-                  name: 'This year',
-                  data: [18, 16, 5, 8, 3, 14, 14, 16, 17, 19, 18, 20]
-                },
-                {
-                  name: 'Last year',
-                  data: [12, 11, 4, 6, 2, 9, 9, 10, 11, 12, 13, 13]
-                }
-              ]}
-              sx={{ height: '100%' }}
-            />
-          </Grid>
-          <Grid
-            xs={12}
-            md={6}
-            lg={4}
-          >
-            <OverviewTraffic
-              chartSeries={[63, 15, 22]}
-              labels={['Desktop', 'Tablet', 'Phone']}
-              sx={{ height: '100%' }}
-            />
-          </Grid>
-          <Grid
-            xs={12}
-            md={6}
-            lg={4}
-          >
-            <OverviewLatestProducts
-              products={[
-                {
-                  id: '5ece2c077e39da27658aa8a9',
-                  image: '/assets/products/product-1.png',
-                  name: 'Healthcare Erbology',
-                  updatedAt: subHours(now, 6).getTime()
-                },
-                {
-                  id: '5ece2c0d16f70bff2cf86cd8',
-                  image: '/assets/products/product-2.png',
-                  name: 'Makeup Lancome Rouge',
-                  updatedAt: subDays(subHours(now, 8), 2).getTime()
-                },
-                {
-                  id: 'b393ce1b09c1254c3a92c827',
-                  image: '/assets/products/product-5.png',
-                  name: 'Skincare Soja CO',
-                  updatedAt: subDays(subHours(now, 1), 1).getTime()
-                },
-                {
-                  id: 'a6ede15670da63f49f752c89',
-                  image: '/assets/products/product-6.png',
-                  name: 'Makeup Lipstick',
-                  updatedAt: subDays(subHours(now, 3), 3).getTime()
-                },
-                {
-                  id: 'bcad5524fe3a2f8f8620ceda',
-                  image: '/assets/products/product-7.png',
-                  name: 'Healthcare Ritual',
-                  updatedAt: subDays(subHours(now, 5), 6).getTime()
-                }
-              ]}
-              sx={{ height: '100%' }}
-            />
-          </Grid>
-          <Grid
-            xs={12}
-            md={12}
-            lg={8}
-          >
-            <OverviewLatestOrders
-              orders={[
-                {
-                  id: 'f69f88012978187a6c12897f',
-                  ref: 'DEV1049',
-                  amount: 30.5,
-                  customer: {
-                    name: 'Ekaterina Tankova'
-                  },
-                  createdAt: 1555016400000,
-                  status: 'pending'
-                },
-                {
-                  id: '9eaa1c7dd4433f413c308ce2',
-                  ref: 'DEV1048',
-                  amount: 25.1,
-                  customer: {
-                    name: 'Cao Yu'
-                  },
-                  createdAt: 1555016400000,
-                  status: 'delivered'
-                },
-                {
-                  id: '01a5230c811bd04996ce7c13',
-                  ref: 'DEV1047',
-                  amount: 10.99,
-                  customer: {
-                    name: 'Alexa Richardson'
-                  },
-                  createdAt: 1554930000000,
-                  status: 'refunded'
-                },
-                {
-                  id: '1f4e1bd0a87cea23cdb83d18',
-                  ref: 'DEV1046',
-                  amount: 96.43,
-                  customer: {
-                    name: 'Anje Keizer'
-                  },
-                  createdAt: 1554757200000,
-                  status: 'pending'
-                },
-                {
-                  id: '9f974f239d29ede969367103',
-                  ref: 'DEV1045',
-                  amount: 32.54,
-                  customer: {
-                    name: 'Clarke Gillebert'
-                  },
-                  createdAt: 1554670800000,
-                  status: 'delivered'
-                },
-                {
-                  id: 'ffc83c1560ec2f66a1c05596',
-                  ref: 'DEV1044',
-                  amount: 16.76,
-                  customer: {
-                    name: 'Adam Denisov'
-                  },
-                  createdAt: 1554670800000,
-                  status: 'delivered'
-                }
-              ]}
-              sx={{ height: '100%' }}
-            />
-          </Grid>
-        </Grid>
-      </Container>
-    </Box>
-  </>
-);
+//게이지차트 데이터
+const gaugeData = {
+  TotalWard: [843, 912],
+  NormalWard: [602, 636],
+  NursingCare: [112, 120],
+};
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
 
+const wardStatusData =  [
+  {
+    Ward: "052",
+    Value: "0000000100010000000",
+  },
+  {
+    Ward: "081",
+    Value: "00000010000000001000000000000",
+  },
+  {
+    Ward: "091",
+    Value: "0000000000000000000001000100000000",
+  },
+  {
+    Ward: "092",
+    Value: "000000020000000000000100003000000000000000",
+  },
+  {
+    Ward: "101",
+    Value: "0000003000000010000000000000000000000",
+  },
+  {
+    Ward: "102",
+    Value: "0000000000000000000000100000000000000000",
+  },
+  {
+    Ward: "111",
+    Value: "000000000000000000000001100100000000000000",
+  },
+  {
+    Ward: "112",
+    Value: "100000000201001000110100000000000",
+  },
+  {
+    Ward: "121",
+    Value: "00000000000000000010001000000000",
+  },
+  {
+    Ward: "122",
+    Value: "0000000000000000000000000",
+  },
+  {
+    Ward: "131",
+    Value: "000000000001000000010000",
+  },
+  {
+    Ward: "132",
+    Value: "000000000000000000000000000010000000020",
+  },
+  {
+    Ward: "141",
+    Value: "0000000101110000000000000000203000000000000",
+  },
+  {
+    Ward: "142",
+    Value: "0100000000000000000000002000000000000",
+  },
+  {
+    Ward: "143",
+    Value: "0000000101110000000000000000203000000000000",
+  },
+  {
+    Ward: "144",
+    Value: "0100000000000000000000002000000000000",
+  },
+  {
+    Ward: "145",
+    Value: "0000000101110000000000000000203000000000000",
+  },
+  {
+    Ward: "146",
+    Value: "0100000000000000000000002000000000000",
+  },
+  {
+    Ward: "147",
+    Value: "0000000101110000000000000000203000000000000",
+  },
+  {
+    Ward: "148",
+    Value: "0100000000000000000000002000000000000",
+  },
+  {
+    Ward: "149",
+    Value: "0000000101110000000000000000203000000000000",
+  },
+  {
+    Ward: "150",
+    Value: "0100000000000000000000002000000000000",
+  },
+  {
+    Ward: "151",
+    Value: "0000000101110000000000000000203000000000000",
+  },
+  {
+    Ward: "152",
+    Value: "0100000000000000000000002000000000000",
+  },
+
+  {
+    Ward: "153",
+    Value: "0000000101110000000000000000203000000000000",
+  },
+  {
+    Ward: "154",
+    Value: "0100000000000000000000002000000000000",
+  },
+  {
+    Ward: "155",
+    Value: "0000000101110000000000000000203000000000000",
+  },
+  {
+    Ward: "156",
+    Value: "0100000000000000000000002000000000000",
+  },
+  {
+    Ward: "157",
+    Value: "0000000101110000000000000000203000000000000",
+  },
+  {
+    Ward: "158",
+    Value: "0100000000000000000000002000000000000",
+  },
+];
+
+
+
+const Page = () => {
+  const [count, setCount] = useState(0);
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((prevCount) => prevCount + 1);
+      setCurrentTime(new Date()); // 현재 시간을 갱신
+      console.log(count);
+    }, 5000); // 5초마다 리랜더링
+
+    return () => clearInterval(interval);
+  }, [count]);
+
+  return (
+    <>
+      <Head>
+        <title>아주대 의료원-병상가동율</title>
+      </Head>
+      <Box component="main" 
+      sx={{ flexGrow: 1, py: 0 }}>
+        <Container maxWidth="xl">
+          <p>Last Reloaded: {currentTime.toLocaleTimeString()} 주석시, 한 페이지 안에 가득차도록 나옴</p>
+          <Grid container 
+          spacing={4}>
+            <Grid xs={12} 
+            sm={6} 
+            lg={4}>
+              <OverviewBudget
+                difference={12}
+                positive
+                sx={{ height: "100%" }}
+                value={Math.round((gaugeData.TotalWard[0] / gaugeData.TotalWard[1]) * 100)}
+                currentName="전체 병동"
+              />
+            </Grid>
+            <Grid 
+            xs={12} 
+            sm={6} 
+            lg={4}>
+              <OverviewBudget
+                difference={4}
+                positive={false}
+                sx={{ height: "100%" }}
+                value={Math.round((gaugeData.NormalWard[0] / gaugeData.NormalWard[1]) * 100)}
+                currentName="일반 병동"
+              />
+            </Grid>
+            <Grid 
+            xs={12} 
+            sm={6} 
+            lg={4}>
+              <OverviewBudget
+                difference={4}
+                positive={true}
+                sx={{ height: "100%", paddingBottom: "0px" }}
+                value={Math.round((gaugeData.NursingCare[0] / gaugeData.NursingCare[1]) * 100)}
+                currentName="간호 병동"
+              />
+            </Grid>
+            <Grid 
+            xs={12} 
+            lg={6}>
+              <div className="chartWrapper">
+                <TableChartByh data={data} 
+                sx={{height:'50%'}} />
+                <BarChartByh data={data} 
+                sx={{height:'50%'}} />
+              </div>
+            </Grid>
+            <Grid 
+            xs={12} 
+            md={12} 
+            lg={6}>
+              <WardStatus wardStatusData={wardStatusData}/>
+              {/* <OverviewTraffic
+                chartSeries={[63, 15, 22]}
+                labels={["Desktop", "Tablet", "Phone"]}
+                sx={{ height: "100%" }}
+              /> */}
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+    </>
+  );
+};
+Page.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 export default Page;
