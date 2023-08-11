@@ -25,7 +25,7 @@ export const options = {
   maxColor: "#4CCBA1",
   headerHeight: 15,
   fontColor: "black",
-  showScale: true,
+  // showScale: true,
   highlightOnMouseOver: true,
 };
 

@@ -3181,7 +3181,7 @@ const Page = () => {
       </Head>
       <Box component="main" sx={{ flexGrow: 1, py: 0 }}>
         <Container maxWidth="xl">
-          <Grid container spacing={4}>
+          <Grid container spacing={3}>
             <Grid xs={12} sm={12} lg={2}>
               <BasicDatePicker
                 initValue={date}
@@ -3212,6 +3212,7 @@ const Page = () => {
                     paddingBottom: "0px",
                   }}
                 />
+
                 <CardContent
                   sx={{
                     paddingTop: "10px",
