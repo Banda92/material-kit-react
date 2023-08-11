@@ -3,10 +3,10 @@ import { Chart } from "react-google-charts";
 
 export const data = [
   [
-    "Location",
+    "Name",
     "Parent",
-    "Market trade volume (size)",
-    "Market increase/decrease (color)",
+    "Value",
+    "Value increase/decrease (color)",
   ],
 
   ["구분", null, 0, 0],
@@ -23,44 +23,18 @@ export const data = [
   ["EICU","권역응급의료센터",0.6,6],
   ["SUB-ICU","구분",0,0],
   ["091S","SUB-ICU",0.17,1.7],
-//   ["Global", null, 0, 0],
-//   ["America", "Global", 0, 0],
-//   ["Europe", "Global", 0, 0],
-//   ["Asia", "Global", 0, 0],
-//   ["Australia", "Global", 0, 0],
-//   ["Africa", "Global", 0, 0],
-//   ["Brazil", "America", 11, 10],
-//   ["USA", "America", 52, 31],
-//   ["Mexico", "America", 24, 12],
-//   ["Canada", "America", 16, -23],
-//   ["France", "Europe", 42, -11],
-//   ["Germany", "Europe", 31, -2],
-//   ["Sweden", "Europe", 22, -13],
-//   ["Italy", "Europe", 17, 4],
-//   ["UK", "Europe", 21, -5],
-//   ["China", "Asia", 36, 4],
-//   ["Japan", "Asia", 20, -12],
-//   ["India", "Asia", 40, 63],
-//   ["Laos", "Asia", 4, 34],
-//   ["Mongolia", "Asia", 1, -5],
-//   ["Israel", "Asia", 12, 24],
-//   ["Iran", "Asia", 18, 13],
-//   ["Pakistan", "Asia", 11, -52],
-//   ["Egypt", "Africa", 21, 0],
-//   ["S. Africa", "Africa", 30, 43],
-//   ["Sudan", "Africa", 12, 2],
-//   ["Congo", "Africa", 10, 12],
-//   ["Zaire", "Africa", 8, 10],
 ];
 
 export const options = {
-  minColor: "#f00",
+  minColor: "#F25B51",
   midColor: "#ddd",
-  maxColor: "#0d0",
+  maxColor: "#4CCBA1",
   headerHeight: 15,
   fontColor: "black",
   showScale: true,
+  highlightOnMouseOver:true,
 };
+
 
 export const GoogleTreeMapChart = () => {
   return (
