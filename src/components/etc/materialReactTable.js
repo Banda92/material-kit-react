@@ -3288,7 +3288,7 @@ const AggrTable = (props) => {
         density: 'compact',
         expanded: true, //expand all groups by default
         grouping: ['구분'], //an array of columns to group by by default (can be multiple)
-        pagination: { pageIndex: 0, pageSize: 50 },
+        pagination: { pageIndex: 0, pageSize: 100 },
         sorting: [{ id: '진료일', desc: false }], //sort by state by default
       }}
       muiToolbarAlertBannerChipProps={{ color: 'primary' }}
