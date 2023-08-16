@@ -3149,10 +3149,10 @@ const AggrTable = (props) => {
 
   const columns = useMemo(
     () => [
-      {
-        header: '진료일',
-        accessorKey: '진료일',
-      },
+    //   {
+    //     header: '진료일',
+    //     accessorKey: '진료일',
+    //   },
       {
         header: '구분',
         accessorKey: '구분',
@@ -3165,11 +3165,12 @@ const AggrTable = (props) => {
         header: '전체가동율',
         accessorKey: '전체가동율',
         enableGrouping: false, //do not let this column be grouped
-        aggregationFn: 'max', //show the max age in the group (lots of pre-built aggregationFns to choose from)
+        aggregationFn: 'mean',
+        // aggregationFn: 'max', //show the max age in the group (lots of pre-built aggregationFns to choose from)
         //required to render an aggregated cell
         AggregatedCell: ({ cell, table }) => (
             <>
-              Max by{' '}
+              Avg by{' '}
               {table.getColumn(cell.row.groupingColumnId ?? '').columnDef.header}:{' '}
               <Box
                 sx={{ color: 'info.main', display: 'inline', fontWeight: 'bold' }}
@@ -3180,8 +3181,9 @@ const AggrTable = (props) => {
           ),
           Footer: () => (
             <Stack>
-              Max 전체가동율:
-              <Box color="warning.main">{`${Math.round(maxAge)}%`}</Box>
+              Avg 전체가동율:
+              {/* <Box color="warning.main">{`${Math.round(maxAge)}%`}</Box> */}
+              <Box color="warning.main">{`${Math.round(averageSalary)}%`}</Box>
             </Stack>
           ),
         },
@@ -3228,7 +3230,7 @@ const AggrTable = (props) => {
     //   {
     //     header: '전체가동율',
     //     accessorKey: '전체가동율',
-    //     aggregationFn: 'mean',
+        // aggregationFn: 'mean',
     //     //required to render an aggregated cell, show the average salary in the group
     //     AggregatedCell: ({ cell, table }) => (
     //       <>
@@ -3271,7 +3273,7 @@ const AggrTable = (props) => {
     //   },
     ],
     // [averageSalary, maxAge],
-    [maxAge],
+    [averageSalary],
   );
 
   return (
@@ -3286,11 +3288,11 @@ const AggrTable = (props) => {
         density: 'compact',
         expanded: true, //expand all groups by default
         grouping: ['구분'], //an array of columns to group by by default (can be multiple)
-        pagination: { pageIndex: 0, pageSize: 10 },
+        pagination: { pageIndex: 0, pageSize: 50 },
         sorting: [{ id: '진료일', desc: false }], //sort by state by default
       }}
       muiToolbarAlertBannerChipProps={{ color: 'primary' }}
-      muiTableContainerProps={{ sx: { maxHeight: 330,} }}
+    //   muiTableContainerProps={{ sx: { maxHeight: 330,} }}
     />
   );
 };
