@@ -27,6 +27,7 @@
     "date-fns": "2.29.3",
     "dayjs": "^1.11.9",
     "formik": "2.2.9",
+    "material-react-table": "^1.14.0",
     "next": "13.1.6",
     "nprogress": "0.2.0",
     "prop-types": "15.8.1",

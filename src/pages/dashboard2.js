@@ -12,6 +12,7 @@ import { Layout as DashboardLayout } from "src/layouts/dashboard/layout";
 import dynamic from "next/dynamic";
 import { GoogleTreeMapChart } from "src/components/google/GoogleTreeMapChart";
 import ReactDataTable from "src/components/mui/reactDataTable";
+import AggrTable from "src/components/etc/materialReactTable";
 
 
 const BasicDatePicker = dynamic(import("src/components/mui/basicDatePicker"), { ssr: false });
@@ -3254,7 +3255,8 @@ const Page = () => {
                     paddingTop: "10px",
                   }}
                 >
-                  <ReactDataTable sampleData={sampleData} columnKeys={columnKeys} />
+                  {/* <ReactDataTable sampleData={sampleData} columnKeys={columnKeys} /> */}
+                  <AggrTable data={sampleData.filter(data=>data.진료일 === date & category.includes(data.구분) & ward.includes(data.병동))} date={date} category={category} ward={ward}/>
                 </CardContent>
               </Card>
             </Grid>
