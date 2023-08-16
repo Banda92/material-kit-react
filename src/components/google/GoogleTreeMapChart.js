@@ -62,7 +62,7 @@ export const GoogleTreeMapChart = React.memo((props) => {
     <Chart
       chartType="TreeMap"
       width="100%"
-      height="400px"
+      height="300px"
       data={data}
       options={options}
       chartEvents={[

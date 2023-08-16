@@ -3290,7 +3290,7 @@ const AggrTable = (props) => {
         sorting: [{ id: '진료일', desc: false }], //sort by state by default
       }}
       muiToolbarAlertBannerChipProps={{ color: 'primary' }}
-      muiTableContainerProps={{ sx: { maxHeight: 700,} }}
+      muiTableContainerProps={{ sx: { maxHeight: 330,} }}
     />
   );
 };

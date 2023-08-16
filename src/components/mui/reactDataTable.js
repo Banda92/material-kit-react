@@ -10,9 +10,9 @@ const ReactDataTable = (props) => {
 
   return (
     // <div className='cardLayer' style={{ height: '400px', width: '45vw', padding: '1%', backgroundColor: 'white' }}>
-      <div style={{ height: '350px',  overflow: 'hidden', fontSize: '1px' }}>
+      <div style={{ height: '300px',  overflow: 'hidden', fontSize: '1px' }}>
         <TableContainer component={Paper}>
-          <div style={{ overflowY: 'scroll', height: '350px' }}>
+          <div style={{ overflowY: 'scroll', height: '300px' }}>
             <Table size="small">
               <TableHead>
                 <TableRow>

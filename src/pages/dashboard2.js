@@ -3204,7 +3204,7 @@ const Page = () => {
                 label="Ward"
               />
             </Grid>
-            <Grid xs={12} lg={12}>
+            <Grid xs={12} lg={6}>
               <Card>
                 <CardHeader
                   title="      병실 종류별 병상 이용현황-기본테이블(기간총계)"
@@ -3241,7 +3241,7 @@ const Page = () => {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid xs={12} md={12} lg={6}>
+            <Grid xs={12} md={12} lg={12}>
               <Card>
                 <CardHeader
                   title="테이블2(추후 합계기능 추가된 테이블로 변경 예정)"
