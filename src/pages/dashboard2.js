@@ -14,7 +14,6 @@ import { GoogleTreeMapChart } from "src/components/google/GoogleTreeMapChart";
 import ReactDataTable from "src/components/mui/reactDataTable";
 import AggrTable from "src/components/etc/materialReactTable";
 
-
 const BasicDatePicker = dynamic(import("src/components/mui/basicDatePicker"), { ssr: false });
 const Checkboxes = dynamic(import("src/components/mui/checkBoxes"), { ssr: false });
 
@@ -3153,6 +3152,27 @@ const sampleData = [
 //테이블에 전달할 컬럼명리스트
 const columnKeys = Object.keys(sampleData[0]);
 
+//트리맵에 전달할 데이터
+const treeMapData = [
+  ["Name", "Parent", "Value", "Value increase/decrease (color)"],
+  ["구분", null, 0, 0],
+  ["간호간병", "구분", 0, 0],
+  ["061W", "간호간병", 0.5536, 5.5],
+  ["071W", "간호간병", 0.6182, 6.1],
+  ["072W", "간호간병", 0.6296, 6.2],
+  ["권역외상센터", "구분", 0, 0],
+  ["T41W", "권역외상센터", 0.85, 8.5],
+  ["T51W", "권역외상센터", 1, 10],
+  ["TICUA", "권역외상센터", 1, 10],
+  ["권역응급의료센터", "구분", 0, 0],
+  ["E41W", "권역응급의료센터", 0.439, 4.4],
+  ["EICU", "권역응급의료센터", 0.6, 6],
+  ["SUB-ICU", "구분", 0, 0],
+  ["091S", "SUB-ICU", 0.17, 1.7],
+];
+
+
+
 // 중복되지않는 진료일 추출
 const uniqueDates = Array.from(new Set(sampleData.map((item) => item["진료일"].split(" ")[0])));
 // 중복되지않는 구분 추출
@@ -3163,17 +3183,32 @@ const uniqueWards = Array.from(new Set(sampleData.map((item) => item["병동"].s
 const Page = () => {
   const [category, setCategory] = useState(uniqueCategories);
   const [ward, setWard] = useState(uniqueWards);
-  const [date, setDate] = useState('2023-07-01 0:00');
+  const [date, setDate] = useState("2023-07-01 0:00");
 
-  
-  // useEffect(() => {
-  //   console.log(`Filter(category) State has changed : ${category}`);
-  // }, [category]);
-  // useEffect(() => {
-  //   console.log(`Filter(ward) State has changed : ${ward}`);
-  // }, [ward]);
 
-  
+
+
+  //트리맵 데이터 1차필터 (category)
+const filteredTreemapDataTemp = treeMapData.filter((data, index) => {
+  if (index === 0 || index === 1) {
+    return true;
+  }
+  return ( (category.includes(data[0]) || category.includes(data[1])) );
+});
+//트리맵 데이터 2차필터 (ward)
+const filteredTreemapData = filteredTreemapDataTemp.filter((data, index) => {
+  if (index === 0 || index === 1) {
+    return true;
+  }
+  return ( (ward.includes(data[0])||category.includes(data[0])) );
+});
+
+  useEffect(() => {
+    console.log(`Filter(category) State has changed : ${category}`);
+  }, [category]);
+  useEffect(() => {
+    console.log(`Filter(ward) State has changed : ${ward}`);
+  }, [ward]);
 
   return (
     <>
@@ -3184,25 +3219,13 @@ const Page = () => {
         <Container maxWidth="xl">
           <Grid container spacing={3}>
             <Grid xs={12} sm={12} lg={2}>
-              <BasicDatePicker
-                initValue={date}
-                data={uniqueDates}
-                setDateHandler={setDate}
-              />
+              <BasicDatePicker initValue={date} data={uniqueDates} setDateHandler={setDate} />
             </Grid>
             <Grid xs={12} sm={12} lg={5}>
-              <Checkboxes
-                setFilterHandler={setCategory}
-                data={uniqueCategories}
-                label="Category"
-              />
+              <Checkboxes setFilterHandler={setCategory} data={uniqueCategories} label="Category" />
             </Grid>
             <Grid xs={12} sm={12} lg={5}>
-              <Checkboxes
-                setFilterHandler={setWard}
-                data={uniqueWards}
-                label="Ward"
-              />
+              <Checkboxes setFilterHandler={setWard} data={uniqueWards} label="Ward" />
             </Grid>
             <Grid xs={12} lg={6}>
               <Card>
@@ -3219,7 +3242,13 @@ const Page = () => {
                     paddingTop: "10px",
                   }}
                 >
-                  <GoogleTreeMapChart setCategory={setCategory} setWard={setWard} uniqueCategories={uniqueCategories} uniqueWards={uniqueWards} />
+                  <GoogleTreeMapChart
+                    data={filteredTreemapData}
+                    setCategory={setCategory}
+                    setWard={setWard}
+                    uniqueCategories={uniqueCategories}
+                    uniqueWards={uniqueWards}
+                  />
                 </CardContent>
               </Card>
             </Grid>
@@ -3237,7 +3266,15 @@ const Page = () => {
                     paddingTop: "10px",
                   }}
                 >
-                  <ReactDataTable sampleData={sampleData.filter(data=>data.진료일 === date & category.includes(data.구분) & ward.includes(data.병동))} columnKeys={columnKeys} />
+                  <ReactDataTable
+                    sampleData={sampleData.filter(
+                      (data) =>
+                        (data.진료일 === date) &
+                        category.includes(data.구분) &
+                        ward.includes(data.병동)
+                    )}
+                    columnKeys={columnKeys}
+                  />
                 </CardContent>
               </Card>
             </Grid>
@@ -3256,7 +3293,17 @@ const Page = () => {
                   }}
                 >
                   {/* <ReactDataTable sampleData={sampleData} columnKeys={columnKeys} /> */}
-                  <AggrTable data={sampleData.filter(data=>data.진료일 === date & category.includes(data.구분) & ward.includes(data.병동))} date={date} category={category} ward={ward}/>
+                  <AggrTable
+                    data={sampleData.filter(
+                      (data) =>
+                        (data.진료일 === date) &
+                        category.includes(data.구분) &
+                        ward.includes(data.병동)
+                    )}
+                    date={date}
+                    category={category}
+                    ward={ward}
+                  />
                 </CardContent>
               </Card>
             </Grid>
