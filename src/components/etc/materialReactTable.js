@@ -3133,19 +3133,21 @@ const AggrTable = (props) => {
       ];
 
 
-      const data = sampleData.filter(data=>data.진료일 === date & category.includes(data.구분) & ward.includes(data.병동))
+      const data = sampleData.filter(data=>
+        /* data.진료일 === date & */
+        category.includes(data.구분) & ward.includes(data.병동))
 
 
 
   const averageSalary = useMemo(
     () => data.reduce((acc, curr) => acc + curr.전체가동율, 0) / data.length,
-    [],
+    [data],
   );
 
-  const maxAge = useMemo(
-    () => data.reduce((acc, curr) => Math.max(acc, curr.전체가동율), 0),
-    [],
-  );
+//   const maxAge = useMemo(
+//     () => data.reduce((acc, curr) => Math.max(acc, curr.전체가동율), 0),
+//     [],
+//   );
 
   const columns = useMemo(
     () => [
@@ -3289,7 +3291,7 @@ const AggrTable = (props) => {
         expanded: true, //expand all groups by default
         grouping: ['구분'], //an array of columns to group by by default (can be multiple)
         pagination: { pageIndex: 0, pageSize: 100 },
-        sorting: [{ id: '진료일', desc: false }], //sort by state by default
+        //sorting: [{ id: '진료일', desc: false }], //sort by state by default
       }}
       muiToolbarAlertBannerChipProps={{ color: 'primary' }}
     //   muiTableContainerProps={{ sx: { maxHeight: 330,} }}
