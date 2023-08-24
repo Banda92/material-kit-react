@@ -3203,12 +3203,12 @@ const filteredTreemapData = filteredTreemapDataTemp.filter((data, index) => {
   return ( (ward.includes(data[0])||category.includes(data[0])) );
 });
 
-  useEffect(() => {
-    console.log(`Filter(category) State has changed : ${category}`);
-  }, [category]);
-  useEffect(() => {
-    console.log(`Filter(ward) State has changed : ${ward}`);
-  }, [ward]);
+  // useEffect(() => {
+  //   console.log(`Filter(category) State has changed : ${category}`);
+  // }, [category]);
+  // useEffect(() => {
+  //   console.log(`Filter(ward) State has changed : ${ward}`);
+  // }, [ward]);
 
   return (
     <>
